@@ -52,27 +52,36 @@
             <li><%= link_to "Link2", "/path2"  %></li>
             <li><%= link_to "Link3", "/path3"  %></li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
+            <li>
+              <%= link_to edit_user_registration_path do %>
+                  <span class="glyphicon glyphicon-user"></span> <%= truncate(current_user.email, length: 25).html_safe %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                  <span class="glyphicon glyphicon-log-out"></span> Sign out
+              <% end %>
+            </li>
+          <% else %>
+              <li>
+                <%= link_to new_user_session_path do %>
+                    <span class="glyphicon glyphicon-log-in"></span> Sign in
+                <% end %>
+              </li>
+          <% end %>
+          </ul>
         </div>
       </div>
     </div>
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-9">
+        <div class="col-lg-12">
           <%= bootstrap_flash %>
           <%= yield %>
         </div>
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
       </div><!--/row-->
 
       <footer>
