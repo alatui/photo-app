@@ -9,9 +9,11 @@ gem 'devise-bootstrap-views'
 gem 'stripe'
 
 #image upload
-gem 'carrierwave'
+gem 'carrierwave', :github => 'carrierwaveuploader/carrierwave', :branch => 'master'
 gem 'mini_magick'
+
 gem 'fog'
+gem 'fog-aws'
 
 
 # Use Puma as the app server
